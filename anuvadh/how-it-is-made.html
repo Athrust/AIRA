@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get Started with Anuvadh - Sign Language Translation">
+    <title>How It Is Made - Anuvadh</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dark-theme">
+    <!-- Ambient Background Blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar glass">
+        <div class="logo">
+            <span class="gradient-text">Anuvadh</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="how-it-is-made.html" class="active">How It Is Made</a></li>
+            <li><a href="get-started.html">Get Started</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Page Content -->
+    <main class="container page-content">
+        
+        <!-- Header -->
+        <div class="glass card content-card fade-in" style="margin-bottom: 3rem;">
+            <h2>How We Made <span class="gradient-text">Anuvadh</span></h2>
+            <p style="margin-bottom: 0;">From deep learning neural networks to computer vision engineering, discover the technical foundations that make real-time sign language translation possible.</p>
+        </div>
+
+        <!-- Section 1 -->
+        <section class="glass article-card fade-in delay-1">
+            <h2>1. The Problem</h2>
+            <p>Millions of deaf and hard-of-hearing individuals rely on sign language as their primary method of communication. However, most tele-consultation platforms—including telemedicine systems, remote customer service, and online education—are designed primarily for spoken or written language. During video consultations, deaf users face a significant barrier if the other participant does not understand sign language.</p>
+            <p>Current reliance on human interpreters introduces several issues:</p>
+            <ul>
+                <li><strong>Availability:</strong> Interpreter access is often limited.</li>
+                <li><strong>Complexity:</strong> Scheduling is complicated for immediate needs.</li>
+                <li><strong>Privacy:</strong> Sensitive consultations are compromised by a third party.</li>
+                <li><strong>Speed:</strong> Real-time conversation flow is significantly reduced.</li>
+            </ul>
+        </section>
+
+        <!-- Section 2 -->
+        <section class="glass article-card fade-in delay-2">
+            <h2>2. Technical Data Foundations</h2>
+            <p>A real-time translation system requires high-quality data to accurately interpret gestures, body movements, and facial expressions.</p>
+            <h3>Core Datasets: iSign and ISLTranslate</h3>
+            <p>The system is built using the iSign and ISLTranslate datasets, which provide the following structured information:</p>
+            <ul>
+                <li><strong>Landmark and Pose Data:</strong> Using frameworks like MediaPipe, the system extracts 3D coordinates for hand joints, wrist angles, arm orientation, facial expressions, and body posture.</li>
+                <li><strong>Feature Extraction:</strong> These coordinates form the structured input data for the gesture recognition models.</li>
+                <li><strong>Linguistic Mapping:</strong> Sign language gestures are mapped to meaningful words and sentences in spoken language using dictionaries and linguistic datasets.</li>
+            </ul>
+        </section>
+
+        <!-- Section 3 -->
+        <section class="glass article-card fade-in delay-1">
+            <h2>3. Modeling and Recognition Techniques</h2>
+            <p>The system integrates computer vision and deep learning to interpret human gestures.</p>
+            <h3>A. Pose and Gesture Detection</h3>
+            <p>The first stage involves detecting hands, fingers, and body posture from video frames. These landmarks are represented as coordinates that capture the structure and movement of gestures. This skeletal representation allows the system to analyze gestures regardless of background noise or lighting conditions.</p>
+            <h3>B. Temporal Gesture Recognition</h3>
+            <p>Because sign language consists of dynamic movements, the system utilizes temporal models such as Long Short-Term Memory (LSTM) networks or Gated Recurrent Units (GRU). These models process sequences of landmark coordinates across multiple frames to learn patterns representing signs, phrases, and expressions.</p>
+            <h3>C. Speech Generation</h3>
+            <p>The final stage uses neural text-to-speech models to convert translated sentences into audible speech. This ensures the message is delivered audibly to the hearing participant in real time.</p>
+        </section>
+
+        <!-- Section 4 -->
+        <section class="glass article-card fade-in delay-2">
+            <h2>4. System Architecture</h2>
+            <p>The system follows a modular layered design for efficiency:</p>
+            <ul>
+                <li><strong>Data Ingestion Layer:</strong> Captures and normalizes video streams from webcams.</li>
+                <li><strong>Vision Processing Layer:</strong> Extracts features and converts them into structured numerical representations.</li>
+                <li><strong>Gesture Recognition Layer:</strong> Analyzes sequences of gesture data to classify them into predefined signs or phrases.</li>
+                <li><strong>Language Processing Layer:</strong> Refines detected tokens into grammatically correct text.</li>
+                <li><strong>Speech Synthesis Layer:</strong> Converts text into spoken language instantly.</li>
+            </ul>
+        </section>
+
+        <!-- Section 5 -->
+        <section class="glass article-card fade-in delay-1">
+            <h2>5. Validation, Testing, and Ethics</h2>
+            <h3>A. Testing Protocols</h3>
+            <ul>
+                <li><strong>Model Accuracy:</strong> Recognition models are evaluated using metrics such as precision, recall, and F1-score.</li>
+                <li><strong>Real-Time Performance:</strong> Latency tests measure the time required for recognition and speech generation to maintain a natural conversation flow.</li>
+                <li><strong>User Testing:</strong> The system is tested with deaf users to evaluate usability and clarity of translation.</li>
+            </ul>
+            <h3>B. Ethical and Privacy Considerations</h3>
+            <p>Privacy is maintained by processing video data securely.</p>
+            <ul>
+                <li><strong>Landmark-Only Processing:</strong> By converting video to numerical coordinates (landmarks), the system minimizes the need to store raw video data.</li>
+                <li><strong>Data Diversity:</strong> Training datasets (iSign and ISLTranslate) represent diverse users to prevent bias in recognition models.</li>
+                <li><strong>Transparency:</strong> Users are aware when automated translation is active.</li>
+            </ul>
+        </section>
+
+        <!-- Section 6 -->
+        <section class="glass article-card fade-in delay-2">
+            <h2>6. Conclusion</h2>
+            <p><strong>Anuvadh</strong> aims to bridge the communication gap between deaf individuals and hearing professionals. By integrating computer vision, LSTM-based gesture recognition, and speech synthesis, the system enables real-time translation of sign language into spoken language, improving accessibility for millions worldwide.</p>
+        </section>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
