@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,31 +9,38 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <style>
         .modern-name {
             font-family: 'Inter', sans-serif;
             font-weight: 800;
             letter-spacing: -0.5px;
-            color: var(--text-primary); /* Ensures visibility on light background */
+            color: var(--text-primary);
+            /* Ensures visibility on light background */
             transition: all 0.3s ease;
         }
+
         .hover-card {
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
         }
+
         .hover-card:hover {
             transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 15px 35px rgba(245, 158, 11, 0.2), inset 0 0 0 1px rgba(255,255,255,0.1) !important;
-            background: linear-gradient(180deg, rgba(245, 158, 11, 0.08) 0%, rgba(255,255,255,0.04) 100%) !important;
+            box-shadow: 0 15px 35px rgba(245, 158, 11, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+            background: linear-gradient(180deg, rgba(245, 158, 11, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%) !important;
         }
+
         .hover-card:hover .modern-name {
             background: linear-gradient(90deg, #f59e0b, #fbbf24);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+
         .member-list {
             display: flex;
             flex-direction: column;
@@ -40,6 +48,7 @@
             max-width: 600px;
             margin: 0 auto;
         }
+
         .member-list-item {
             display: flex;
             align-items: center;
@@ -51,16 +60,19 @@
             transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
             cursor: pointer;
         }
+
         .member-list-item:hover {
             transform: translateX(10px);
             background: rgba(255, 255, 255, 0.05);
             border-color: rgba(255, 255, 255, 0.15);
-            box-shadow: -5px 10px 20px rgba(0,0,0,0.2);
+            box-shadow: -5px 10px 20px rgba(0, 0, 0, 0.2);
         }
+
         .member-list-item h3 {
             margin: 0;
             font-size: 1.3rem;
         }
+
         .member-list-item:hover .modern-name {
             background: linear-gradient(90deg, #f59e0b, #fbbf24);
             -webkit-background-clip: text;
@@ -69,6 +81,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Ambient Background Blobs -->
     <div class="blob blob-1"></div>
@@ -91,47 +104,47 @@
     <main class="container page-content">
         <div class="glass card content-card fade-in" style="margin-top: 3rem;">
             <h2>About the <span class="gradient-text">Project Members</span></h2>
-            <p style="text-align: center; margin-bottom: 3rem;">Meet the talented individuals who brought Anuvadh to life.</p>
-            
+            <p style="text-align: center; margin-bottom: 3rem;">Meet the talented individuals who brought Anuvadh to
+                life.</p>
+
             <!-- Team Leader Space -->
             <div class="leader-section" style="display: flex; justify-content: center; margin-bottom: 4rem;">
-                <div class="glass card hover-card" style="text-align: center; padding: 2.5rem 3rem; background: linear-gradient(180deg, rgba(245, 158, 11, 0.05) 0%, rgba(255,255,255,0.02) 100%); border: 1px solid rgba(245, 158, 11, 0.3); max-width: 450px; width: 100%; box-shadow: 0 10px 40px rgba(245, 158, 11, 0.15); border-radius: 16px;">
-                    <div style="width: 90px; height: 90px; background: linear-gradient(135deg, #f59e0b, #d97706); border-radius: 50%; margin: 0 auto 1.5rem auto; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; font-weight: bold; color: white; box-shadow: 0 4px 15px rgba(245,158,11,0.3);">H</div>
-                    <h3 class="modern-name" style="margin-bottom: 0.8rem; font-size: 2rem;">Himesh Patel</h3>
-                    <span class="badge" style="display: inline-block; padding: 0.5rem 1.2rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600; background: rgba(245, 158, 11, 0.15); color: #f59e0b; letter-spacing: 1px; text-transform: uppercase;">Team Leader</span>
+                <div class="glass card hover-card"
+                    style="text-align: center; padding: 2.5rem 3rem; background: linear-gradient(180deg, rgba(245, 158, 11, 0.05) 0%, rgba(255,255,255,0.02) 100%); border: 1px solid rgba(245, 158, 11, 0.3); max-width: 450px; width: 100%; box-shadow: 0 10px 40px rgba(245, 158, 11, 0.15); border-radius: 16px;">
+                    <div
+                        style="width: 90px; height: 90px; background: linear-gradient(135deg, #f59e0b, #d97706); border-radius: 50%; margin: 0 auto 1.5rem auto; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; font-weight: bold; color: white; box-shadow: 0 4px 15px rgba(245,158,11,0.3);">
+                        H</div>
+                    <h3 class="modern-name" style="margin-bottom: 0.8rem; font-size: 2rem;">Atharv Mule</h3>
+                    <span class="badge"
+                        style="display: inline-block; padding: 0.5rem 1.2rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600; background: rgba(245, 158, 11, 0.15); color: #f59e0b; letter-spacing: 1px; text-transform: uppercase;">Team
+                        Leader</span>
                 </div>
             </div>
 
-            <h3 style="text-align: center; margin-bottom: 2rem; color: #a0a0a0; font-weight: 500; font-size: 1.2rem;">Project Members</h3>
+            <h3 style="text-align: center; margin-bottom: 2rem; color: #a0a0a0; font-weight: 500; font-size: 1.2rem;">
+                Project Members</h3>
             <div class="member-list">
                 <!-- Team Member -->
                 <div class="member-list-item glass">
                     <h3 class="modern-name">Ashmit Garg</h3>
-                    <span class="badge" style="padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem; font-weight: 500; background: rgba(255, 255, 255, 0.05); color: #a0a0a0; border: 1px solid rgba(255, 255, 255, 0.1);">AI Research</span>
-                </div>
-                
-                <!-- Team Member -->
-                <div class="member-list-item glass">
-                    <h3 class="modern-name">Rehant Ukale</h3>
-                    <span class="badge" style="padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem; font-weight: 500; background: rgba(255, 255, 255, 0.05); color: #a0a0a0; border: 1px solid rgba(255, 255, 255, 0.1);">AI Application</span>
+                    <span class="badge"
+                        style="padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem; font-weight: 500; background: rgba(255, 255, 255, 0.05); color: #a0a0a0; border: 1px solid rgba(255, 255, 255, 0.1);">GOD</span>
                 </div>
 
                 <!-- Team Member -->
                 <div class="member-list-item glass">
-                    <h3 class="modern-name">Yash Raj</h3>
-                    <span class="badge" style="padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem; font-weight: 500; background: rgba(255, 255, 255, 0.05); color: #a0a0a0; border: 1px solid rgba(255, 255, 255, 0.1);">DS</span>
+                    <h3 class="modern-name">Anish Gond</h3>
+                    <span class="badge"
+                        style="padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem; font-weight: 500; background: rgba(255, 255, 255, 0.05); color: #a0a0a0; border: 1px solid rgba(255, 255, 255, 0.1);">Video
+                        to Pose</span>
                 </div>
 
                 <!-- Team Member -->
                 <div class="member-list-item glass">
-                    <h3 class="modern-name">Atharv Mule</h3>
-                    <span class="badge" style="padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem; font-weight: 500; background: rgba(255, 255, 255, 0.05); color: #a0a0a0; border: 1px solid rgba(255, 255, 255, 0.1);">DS</span>
-                </div>
-
-                <!-- Team Member -->
-                <div class="member-list-item glass">
-                    <h3 class="modern-name">Dhruv Gupta</h3>
-                    <span class="badge" style="padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem; font-weight: 500; background: rgba(255, 255, 255, 0.05); color: #a0a0a0; border: 1px solid rgba(255, 255, 255, 0.1);">DS</span>
+                    <h3 class="modern-name">Ohm Manoj Mishra</h3>
+                    <span class="badge"
+                        style="padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem; font-weight: 500; background: rgba(255, 255, 255, 0.05); color: #a0a0a0; border: 1px solid rgba(255, 255, 255, 0.1);">Creativity
+                        advisor</span>
                 </div>
             </div>
         </div>
@@ -139,4 +152,5 @@
 
     <script src="js/main.js"></script>
 </body>
+
 </html>
