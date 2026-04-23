@@ -1,3 +1,13 @@
+// Authentication check
+const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+const isSignupPage = currentPage === 'signup.html';
+const isLoggedIn = localStorage.getItem('anuvadh_logged_in');
+
+if (!isLoggedIn && !isSignupPage) {
+    // Redirect to signup page if not logged in
+    window.location.href = 'signup.html';
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // Reveal animations on page load
     const fadeElements = document.querySelectorAll('.fade-in');

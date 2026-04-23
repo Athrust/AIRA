@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sign Up for Anuvadh - Join the Sign Language Translation Revolution">
+    <title>Sign Up - Anuvadh</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* ── Signup Page Specific Styles ── */
+
+        .signup-section {
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 5%;
+        }
+
+        .signup-card {
+            width: 100%;
+            max-width: 520px;
+            border-radius: 28px;
+            padding: 3rem 2.8rem 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative top-bar gradient */
+        .signup-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary));
+            background-size: 200% 100%;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .signup-card h2 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 0.4rem;
+            letter-spacing: -0.5px;
+        }
+
+        .signup-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 2.2rem;
+            font-weight: 300;
+        }
+
+        /* ── Form Layout ── */
+        .signup-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.3rem;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        /* ── Input Groups ── */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="password"],
+        .form-group input[type="date"] {
+            width: 100%;
+            padding: 0.8rem 1.2rem;
+            border: 1.5px solid rgba(139, 69, 19, 0.15);
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(8px);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--text-primary);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            outline: none;
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(216, 67, 21, 0.12);
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        .form-group label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-left: 0.2rem;
+        }
+
+        /* ── Gender Toggle Pills ── */
+        .gender-section {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .gender-section label.section-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-left: 0.2rem;
+        }
+
+        .gender-pills {
+            display: flex;
+            gap: 0.6rem;
+        }
+
+        .gender-pills input[type="radio"] {
+            display: none;
+        }
+
+        .gender-pills label.pill {
+            flex: 1;
+            text-align: center;
+            padding: 0.7rem 1rem;
+            border-radius: 12px;
+            border: 1.5px solid rgba(139, 69, 19, 0.15);
+            background: rgba(255, 255, 255, 0.4);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gender-pills label.pill:hover {
+            border-color: var(--primary);
+            background: rgba(216, 67, 21, 0.05);
+            color: var(--text-primary);
+        }
+
+        .gender-pills input[type="radio"]:checked + label.pill {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 6px 18px rgba(216, 67, 21, 0.3);
+            font-weight: 600;
+        }
+
+        /* ── Password Strength Indicator ── */
+        .password-wrapper {
+            position: relative;
+        }
+
+        .password-wrapper .toggle-password {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 1.1rem;
+            padding: 0.2rem;
+            transition: color 0.2s ease;
+        }
+
+        .password-wrapper .toggle-password:hover {
+            color: var(--primary);
+        }
+
+        .strength-bar {
+            height: 3px;
+            border-radius: 2px;
+            background: rgba(139, 69, 19, 0.08);
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+
+        .strength-bar .fill {
+            height: 100%;
+            border-radius: 2px;
+            width: 0%;
+            transition: width 0.4s ease, background 0.4s ease;
+        }
+
+        .strength-bar .fill.weak { width: 33%; background: #e53935; }
+        .strength-bar .fill.medium { width: 66%; background: var(--secondary); }
+        .strength-bar .fill.strong { width: 100%; background: #43a047; }
+
+        /* ── Submit Button ── */
+        .signup-btn {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            margin-top: 0.5rem;
+            box-shadow: 0 8px 25px rgba(216, 67, 21, 0.3);
+        }
+
+        .signup-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .signup-btn:hover {
+            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 14px 35px rgba(216, 67, 21, 0.4);
+        }
+
+        .signup-btn:hover::before {
+            opacity: 1;
+        }
+
+        .signup-btn span {
+            position: relative;
+            z-index: 1;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .signup-btn .arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .signup-btn:hover .arrow {
+            transform: translateX(6px);
+        }
+
+
+
+        /* ── Responsive ── */
+        @media (max-width: 560px) {
+            .signup-card {
+                padding: 2rem 1.5rem 2rem;
+                border-radius: 20px;
+            }
+
+            .form-row {
+                flex-direction: column;
+                gap: 1.3rem;
+            }
+
+            .signup-card h2 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Ambient Background Blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar glass">
+        <div class="logo">
+            <span class="gradient-text">Anuvadh</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="how-it-is-made.html">How It Is Made</a></li>
+            <li><a href="get-started.html">Get Started</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="signup.html" class="active">Sign Up</a></li>
+        </ul>
+    </nav>
+
+    <!-- Signup Section -->
+    <main class="signup-section">
+        <div class="glass signup-card fade-in">
+            <h2>Join <span class="gradient-text">Anuvadh</span></h2>
+            <p class="signup-subtitle">Create your account and start translating</p>
+
+            <form action="php/signup_data.php" method="post" class="signup-form" id="signupForm">
+
+                <!-- Name Row -->
+                <div class="form-row">
+                    <div class="form-group fade-in delay-1">
+                        <label for="First_Name">First Name</label>
+                        <input type="text" name="First_Name" id="First_Name" placeholder="e.g. John" required>
+                    </div>
+                    <div class="form-group fade-in delay-1">
+                        <label for="Last_Name">Last Name</label>
+                        <input type="text" name="Last_Name" id="Last_Name" placeholder="e.g. Doe" required>
+                    </div>
+                </div>
+
+                <!-- Date of Birth -->
+                <div class="form-group fade-in delay-1">
+                    <label for="Date">Date of Birth</label>
+                    <input type="date" name="DOB" id="Date" required>
+                </div>
+
+                <!-- Gender Toggle -->
+                <div class="gender-section fade-in delay-1">
+                    <label class="section-label">Gender</label>
+                    <div class="gender-pills">
+                        <input type="radio" id="Male" name="Gender" value="Male" required>
+                        <label for="Male" class="pill">Male</label>
+                        <input type="radio" id="Female" name="Gender" value="Female" required>
+                        <label for="Female" class="pill">Female</label>
+                        <input type="radio" id="Other" name="Gender" value="Other">
+                        <label for="Other" class="pill">Other</label>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="form-group fade-in delay-2">
+                    <label for="ID">Email Address</label>
+                    <input type="email" name="Email_id" id="ID" placeholder="john.doe@example.com" required>
+                </div>
+
+                <!-- Password -->
+                <div class="form-group fade-in delay-2">
+                    <label for="pass">Password</label>
+                    <div class="password-wrapper">
+                        <input type="password" name="Password" id="pass" placeholder="••••••••" required minlength="6">
+                        <button type="button" class="toggle-password" id="togglePassword" aria-label="Toggle password visibility">👁</button>
+                    </div>
+                    <div class="strength-bar">
+                        <div class="fill" id="strengthFill"></div>
+                    </div>
+                </div>
+
+                <!-- Submit -->
+                <button type="submit" class="signup-btn fade-in delay-2">
+                    <span>Create Account <span class="arrow">→</span></span>
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
+    <script>
+        // ── Toggle Password Visibility ──
+        const toggleBtn = document.getElementById('togglePassword');
+        const passInput = document.getElementById('pass');
+
+        toggleBtn.addEventListener('click', () => {
+            const isPassword = passInput.type === 'password';
+            passInput.type = isPassword ? 'text' : 'password';
+            toggleBtn.textContent = isPassword ? '🙈' : '👁';
+        });
+
+        // ── Password Strength Indicator ──
+        const strengthFill = document.getElementById('strengthFill');
+
+        passInput.addEventListener('input', () => {
+            const val = passInput.value;
+            strengthFill.className = 'fill'; // reset
+
+            if (val.length === 0) {
+                strengthFill.style.width = '0%';
+                return;
+            }
+
+            let score = 0;
+            if (val.length >= 6) score++;
+            if (/[A-Z]/.test(val) && /[a-z]/.test(val)) score++;
+            if (/[0-9]/.test(val)) score++;
+            if (/[^A-Za-z0-9]/.test(val)) score++;
+
+            if (score <= 1) {
+                strengthFill.classList.add('weak');
+            } else if (score <= 2) {
+                strengthFill.classList.add('medium');
+            } else {
+                strengthFill.classList.add('strong');
+            }
+        });
+
+        // ── Form Submission Handler ──
+        // Form submits directly to php/signup_data.php
+    </script>
+</body>
+</html>
