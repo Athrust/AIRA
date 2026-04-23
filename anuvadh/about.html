@@ -51,14 +51,22 @@
 
         .member-list-item {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
             padding: 1.2rem 2rem;
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 12px;
             transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
             cursor: pointer;
+        }
+
+        .member-contribution {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin: 0;
         }
 
         .member-list-item:hover {
@@ -108,44 +116,29 @@
             <p style="text-align: center; margin-bottom: 3rem;">Meet the talented individuals who brought Anuvadh to
                 life.</p>
 
-            <!-- Team Leader Space -->
-            <div class="leader-section" style="display: flex; justify-content: center; margin-bottom: 4rem;">
-                <div class="glass card hover-card"
-                    style="text-align: center; padding: 2.5rem 3rem; background: linear-gradient(180deg, rgba(245, 158, 11, 0.05) 0%, rgba(255,255,255,0.02) 100%); border: 1px solid rgba(245, 158, 11, 0.3); max-width: 450px; width: 100%; box-shadow: 0 10px 40px rgba(245, 158, 11, 0.15); border-radius: 16px;">
-                    <div
-                        style="width: 90px; height: 90px; background: linear-gradient(135deg, #f59e0b, #d97706); border-radius: 50%; margin: 0 auto 1.5rem auto; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; font-weight: bold; color: white; box-shadow: 0 4px 15px rgba(245,158,11,0.3);">
-                        H</div>
-                    <h3 class="modern-name" style="margin-bottom: 0.8rem; font-size: 2rem;">Atharv Mule</h3>
-                    <span class="badge"
-                        style="display: inline-block; padding: 0.5rem 1.2rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600; background: rgba(245, 158, 11, 0.15); color: #f59e0b; letter-spacing: 1px; text-transform: uppercase;">Team
-                        Leader</span>
-                </div>
-            </div>
-
-            <h3 style="text-align: center; margin-bottom: 2rem; color: #a0a0a0; font-weight: 500; font-size: 1.2rem;">
-                Project Members</h3>
             <div class="member-list">
                 <!-- Team Member -->
                 <div class="member-list-item glass">
+                    <h3 class="modern-name">Atharv Mule</h3>
+                    <p class="member-contribution">Deployed the AI model to the web application, developed the full frontend interface, and built the complete backend architecture.</p>
+                </div>
+
+                <!-- Team Member -->
+                <div class="member-list-item glass">
                     <h3 class="modern-name">Ashmit Garg</h3>
-                    <span class="badge"
-                        style="padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem; font-weight: 500; background: rgba(255, 255, 255, 0.05); color: #a0a0a0; border: 1px solid rgba(255, 255, 255, 0.1);">GOD</span>
+                    <p class="member-contribution">Defined the problem statement, researched foundational papers (Camgöz et al.), designed the core model architecture (SLRT/SLTT), supervised model training, and led debugging efforts.</p>
                 </div>
 
                 <!-- Team Member -->
                 <div class="member-list-item glass">
                     <h3 class="modern-name">Anish Gond</h3>
-                    <span class="badge"
-                        style="padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem; font-weight: 500; background: rgba(255, 255, 255, 0.05); color: #a0a0a0; border: 1px solid rgba(255, 255, 255, 0.1);">Video
-                        to Pose</span>
+                    <p class="member-contribution">Developed the PHP backend and database architecture for storing and managing user signup data, and managed project documentation.</p>
                 </div>
 
                 <!-- Team Member -->
                 <div class="member-list-item glass">
                     <h3 class="modern-name">Ohm Manoj Mishra</h3>
-                    <span class="badge"
-                        style="padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem; font-weight: 500; background: rgba(255, 255, 255, 0.05); color: #a0a0a0; border: 1px solid rgba(255, 255, 255, 0.1);">Creativity
-                        advisor</span>
+                    <p class="member-contribution">Engineered the real-time video-to-pose extraction pipeline using OpenCV and MediaPipe. Implemented holistic tracking of 576 keypoints, including face mesh (468), body/world pose (66), and hands (42).</p>
                 </div>
             </div>
         </div>

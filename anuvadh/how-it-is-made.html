@@ -10,6 +10,47 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* ── PIPELINE ── */
+        .pipeline-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 2rem; }
+        .pipeline-step { padding: 2rem 1.5rem; border-radius: 16px; position: relative; border: 1px solid rgba(216, 67, 21, 0.2); transition: all 0.3s ease; }
+        .pipeline-step:hover { border-color: var(--primary); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(216, 67, 21, 0.1); }
+        .step-num { font-size: 0.8rem; color: var(--primary); font-weight: 600; letter-spacing: 1px; margin-bottom: 1rem; }
+        .step-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .step-title { font-family: var(--font-heading); font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .step-desc { font-size: 0.95rem; color: var(--text-secondary); }
+
+        /* ── ARCHITECTURE DIAGRAM ── */
+        .arch-container { padding: 1.5rem; overflow-x: auto; margin-top: 2rem; border-radius: 16px; border: 1px solid rgba(216, 67, 21, 0.2); }
+        .arch-diagram { display: flex; gap: 0; align-items: stretch; min-width: 100%; width: max-content; margin: 0 auto; }
+        .arch-col { flex: 1; display: flex; flex-direction: column; gap: 0.8rem; min-width: 150px; padding: 0 0.25rem; }
+        .arch-label { font-size: 0.85rem; color: var(--primary); font-weight: 600; text-transform: uppercase; text-align: center; padding-bottom: 0.8rem; border-bottom: 1px solid rgba(216, 67, 21, 0.2); margin-bottom: 0.8rem; }
+        .arch-block { background: rgba(255, 255, 255, 0.6); border: 1px solid rgba(216, 67, 21, 0.2); border-radius: 8px; padding: 0.8rem 0.5rem; text-align: center; transition: all 0.3s; word-break: break-word; }
+        .arch-block:hover { border-color: var(--primary); background: rgba(216, 67, 21, 0.05); }
+        .arch-block.highlight-green { border-color: #43a047; }
+        .arch-block.highlight-pink  { border-color: #e53935; }
+        .arch-block.highlight-blue  { border-color: var(--secondary); }
+        .arch-block-title { font-weight: 700; font-size: 0.85rem; margin-bottom: 0.3rem; line-height: 1.3; }
+        .arch-block-sub { font-size: 0.75rem; color: var(--text-secondary); line-height: 1.3; }
+        .arch-arrow { display: flex; align-items: center; justify-content: center; padding: 0 0.5rem; flex-shrink: 0; margin-top: 3.5rem; color: var(--primary); font-weight: bold; font-size: 1.2rem;}
+        .arch-connector { width: 2px; background: rgba(216, 67, 21, 0.2); margin: 0.25rem auto; flex: 1; max-height: 15px; min-height: 8px; }
+        .arch-loss-tag { font-size: 0.7rem; color: var(--primary); border: 1px solid var(--primary); border-radius: 4px; padding: 0.2rem 0.4rem; text-align: center; margin-top: 0.5rem; }
+
+        /* ── STATS ── */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; margin-bottom: 3rem; }
+        .stat-card { padding: 2rem; border-radius: 16px; border: 1px solid rgba(216, 67, 21, 0.2); transition: all 0.3s; }
+        .stat-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .stat-card-num { font-size: 3rem; font-weight: 700; color: var(--primary); line-height: 1; margin-bottom: 0.5rem; font-family: var(--font-heading); }
+        .stat-card-label { font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .stat-card-desc { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; }
+
+        /* ── TABLE ── */
+        .comparison-table { width: 100%; border-collapse: collapse; margin-top: 2rem; }
+        .comparison-table th { font-size: 0.85rem; color: var(--text-secondary); text-transform: uppercase; padding: 1rem; text-align: left; border-bottom: 2px solid rgba(216, 67, 21, 0.2); }
+        .comparison-table td { padding: 1rem; border-bottom: 1px solid rgba(216, 67, 21, 0.1); font-size: 0.95rem; }
+        .comparison-table tr:hover td { background: rgba(216, 67, 21, 0.03); }
+        .our-model td { color: var(--primary); font-weight: 600; }
+    </style>
 </head>
 <body class="dark-theme">
     <!-- Ambient Background Blobs -->
@@ -35,86 +76,255 @@
         
         <!-- Header -->
         <div class="glass card content-card fade-in" style="margin-bottom: 3rem;">
-            <h2>How We Made <span class="gradient-text">Anuvadh</span></h2>
-            <p style="margin-bottom: 0;">From deep learning neural networks to computer vision engineering, discover the technical foundations that make real-time sign language translation possible.</p>
+            <h2>Complete <span class="gradient-text">Technical Architecture</span></h2>
+            <p style="margin-bottom: 0;">1st Year B.Tech Project · Implementing Camgöz et al. (2020) · Dataset: iSign (IIT Kanpur)</p>
         </div>
 
         <!-- Section 1 -->
         <section class="glass article-card fade-in delay-1">
-            <h2>1. The Problem</h2>
-            <p>Millions of deaf and hard-of-hearing individuals rely on sign language as their primary method of communication. However, most tele-consultation platforms—including telemedicine systems, remote customer service, and online education—are designed primarily for spoken or written language. During video consultations, deaf users face a significant barrier if the other participant does not understand sign language.</p>
-            <p>Current reliance on human interpreters introduces several issues:</p>
+            <h2>1. Project Overview & iSign Dataset</h2>
+            <p>This project implements the <strong>Sign Language Transformer</strong> architecture from the paper <em>"Sign Language Transformers: Joint End-to-end Sign Language Recognition and Translation"</em> by Camgöz et al. (CVPR 2020).</p>
+            <p>Instead of processing raw video (which is slow and introduces bias based on signer appearance), the system converts video into skeletal coordinates (pose) using MediaPipe and feeds these coordinates to an encoder-decoder transformer.</p>
+            <h3>Dataset Details</h3>
             <ul>
-                <li><strong>Availability:</strong> Interpreter access is often limited.</li>
-                <li><strong>Complexity:</strong> Scheduling is complicated for immediate needs.</li>
-                <li><strong>Privacy:</strong> Sensitive consultations are compromised by a third party.</li>
-                <li><strong>Speed:</strong> Real-time conversation flow is significantly reduced.</li>
+                <li><strong>Dataset:</strong> iSign (largest ISL dataset, released 2024 by IIT Kanpur).</li>
+                <li><strong>Total Pairs:</strong> 118,228 video-sentence pairs extracted from 6,058 unique YouTube videos.</li>
+                <li><strong>Pose Dimension:</strong> 576 keypoints × 3 coordinates (x,y,z) = 1,728 dimensions per frame.</li>
+                <li><strong>Vocabulary:</strong> Capped at the top 8,000 most frequent words (plus special tokens like &lt;unk&gt;) to ensure stable learning from 118k samples.</li>
             </ul>
         </section>
 
         <!-- Section 2 -->
         <section class="glass article-card fade-in delay-2">
-            <h2>2. Technical Data Foundations</h2>
-            <p>A real-time translation system requires high-quality data to accurately interpret gestures, body movements, and facial expressions.</p>
-            <h3>Core Datasets: iSign and ISLTranslate</h3>
-            <p>The system is built using the iSign and ISLTranslate datasets, which provide the following structured information:</p>
-            <ul>
-                <li><strong>Landmark and Pose Data:</strong> Using frameworks like MediaPipe, the system extracts 3D coordinates for hand joints, wrist angles, arm orientation, facial expressions, and body posture.</li>
-                <li><strong>Feature Extraction:</strong> These coordinates form the structured input data for the gesture recognition models.</li>
-                <li><strong>Linguistic Mapping:</strong> Sign language gestures are mapped to meaningful words and sentences in spoken language using dictionaries and linguistic datasets.</li>
-            </ul>
+            <h2>2. The Full Pipeline</h2>
+            <p>From a raw video to an English sentence in five stages:</p>
+            
+            <div class="pipeline-steps">
+                <div class="pipeline-step glass">
+                    <div class="step-num">01 — INPUT</div>
+                    <div class="step-icon">🎥</div>
+                    <div class="step-title">Video / Webcam</div>
+                    <div class="step-desc">Raw RGB video of a signer performing ISL at 30fps.</div>
+                </div>
+                <div class="pipeline-step glass">
+                    <div class="step-num">02 — EXTRACTION</div>
+                    <div class="step-icon">🦴</div>
+                    <div class="step-title">MediaPipe Holistic</div>
+                    <div class="step-desc">576 body keypoints (Face, pose, both hands) = 1728 dimensions per frame.</div>
+                </div>
+                <div class="pipeline-step glass">
+                    <div class="step-num">03 — NORMALISE</div>
+                    <div class="step-icon">📊</div>
+                    <div class="step-title">Z-Score Normalisation</div>
+                    <div class="step-desc">Per-sequence mean and std normalisation. Removes signer position bias.</div>
+                </div>
+                <div class="pipeline-step glass">
+                    <div class="step-num">04 — TRANSLATE</div>
+                    <div class="step-icon">🤖</div>
+                    <div class="step-title">SL Transformer</div>
+                    <div class="step-desc">56.7M parameter transformer reads the sequence and generates English words.</div>
+                </div>
+                <div class="pipeline-step glass">
+                    <div class="step-num">05 — OUTPUT</div>
+                    <div class="step-icon">💬</div>
+                    <div class="step-title">English Text</div>
+                    <div class="step-desc">Beam search (width=5) decodes the most probable English sentence.</div>
+                </div>
+            </div>
         </section>
 
         <!-- Section 3 -->
         <section class="glass article-card fade-in delay-1">
-            <h2>3. Modeling and Recognition Techniques</h2>
-            <p>The system integrates computer vision and deep learning to interpret human gestures.</p>
-            <h3>A. Pose and Gesture Detection</h3>
-            <p>The first stage involves detecting hands, fingers, and body posture from video frames. These landmarks are represented as coordinates that capture the structure and movement of gestures. This skeletal representation allows the system to analyze gestures regardless of background noise or lighting conditions.</p>
-            <h3>B. Temporal Gesture Recognition</h3>
-            <p>Because sign language consists of dynamic movements, the system utilizes temporal models such as Long Short-Term Memory (LSTM) networks or Gated Recurrent Units (GRU). These models process sequences of landmark coordinates across multiple frames to learn patterns representing signs, phrases, and expressions.</p>
-            <h3>C. Speech Generation</h3>
-            <p>The final stage uses neural text-to-speech models to convert translated sentences into audible speech. This ensures the message is delivered audibly to the hearing participant in real time.</p>
+            <h2>3. Transformer Architecture</h2>
+            <p>Based on Camgöz et al. (2020). Two transformers trained jointly: SLRT (encoder) + SLTT (decoder).</p>
+            
+            <div class="arch-container glass">
+                <div class="arch-diagram">
+                    <!-- INPUT -->
+                    <div class="arch-col">
+                        <div class="arch-label">Input</div>
+                        <div class="arch-block highlight-blue">
+                            <div class="arch-block-title">Pose Sequence</div>
+                            <div class="arch-block-sub">(T × 1728)</div>
+                        </div>
+                        <div class="arch-connector"></div>
+                        <div class="arch-block">
+                            <div class="arch-block-title">Pose Embedding</div>
+                            <div class="arch-block-sub">MLP + BatchNorm (1728 → 512)</div>
+                        </div>
+                        <div class="arch-connector"></div>
+                        <div class="arch-block">
+                            <div class="arch-block-title">Positional Encoding</div>
+                            <div class="arch-block-sub">Sinusoidal</div>
+                        </div>
+                    </div>
+
+                    <!-- ARROW -->
+                    <div class="arch-arrow">→</div>
+
+                    <!-- ENCODER -->
+                    <div class="arch-col">
+                        <div class="arch-label">SLRT — Encoder</div>
+                        <div class="arch-block highlight-green">
+                            <div class="arch-block-title">Self-Attention × 4</div>
+                            <div class="arch-block-sub">8 heads · d=512</div>
+                        </div>
+                        <div class="arch-connector"></div>
+                        <div class="arch-block highlight-green">
+                            <div class="arch-block-title">Feed Forward × 4</div>
+                            <div class="arch-block-sub">512 → 4096 → 512</div>
+                        </div>
+                        <div class="arch-connector"></div>
+                        <div class="arch-block">
+                            <div class="arch-block-title">CTC Head</div>
+                            <div class="arch-block-sub">(Disabled for iSign)</div>
+                        </div>
+                    </div>
+
+                    <!-- ARROW -->
+                    <div class="arch-arrow">→</div>
+
+                    <!-- DECODER -->
+                    <div class="arch-col">
+                        <div class="arch-label">SLTT — Decoder</div>
+                        <div class="arch-block">
+                            <div class="arch-block-title">Word Embedding</div>
+                            <div class="arch-block-sub">nn.Embedding(8k, 512)</div>
+                        </div>
+                        <div class="arch-connector"></div>
+                        <div class="arch-block highlight-pink">
+                            <div class="arch-block-title">Masked Self-Attn × 4</div>
+                            <div class="arch-block-sub">Causal mask</div>
+                        </div>
+                        <div class="arch-connector"></div>
+                        <div class="arch-block highlight-pink">
+                            <div class="arch-block-title">Cross-Attention × 4</div>
+                            <div class="arch-block-sub">Attends to encoder</div>
+                        </div>
+                        <div class="arch-loss-tag">Cross-Entropy Loss</div>
+                    </div>
+
+                    <!-- ARROW -->
+                    <div class="arch-arrow">→</div>
+
+                    <!-- OUTPUT -->
+                    <div class="arch-col">
+                        <div class="arch-label">Output</div>
+                        <div class="arch-block">
+                            <div class="arch-block-title">Word Projection</div>
+                            <div class="arch-block-sub">Linear(512, 8004)</div>
+                        </div>
+                        <div class="arch-connector"></div>
+                        <div class="arch-block highlight-blue">
+                            <div class="arch-block-title">Beam Search</div>
+                            <div class="arch-block-sub">width=5</div>
+                        </div>
+                        <div class="arch-connector"></div>
+                        <div class="arch-block highlight-blue">
+                            <div class="arch-block-title">English Text</div>
+                            <div class="arch-block-sub">↓ Output sentence</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- Section 4 -->
         <section class="glass article-card fade-in delay-2">
-            <h2>4. System Architecture</h2>
-            <p>The system follows a modular layered design for efficiency:</p>
-            <ul>
-                <li><strong>Data Ingestion Layer:</strong> Captures and normalizes video streams from webcams.</li>
-                <li><strong>Vision Processing Layer:</strong> Extracts features and converts them into structured numerical representations.</li>
-                <li><strong>Gesture Recognition Layer:</strong> Analyzes sequences of gesture data to classify them into predefined signs or phrases.</li>
-                <li><strong>Language Processing Layer:</strong> Refines detected tokens into grammatically correct text.</li>
-                <li><strong>Speech Synthesis Layer:</strong> Converts text into spoken language instantly.</li>
-            </ul>
+            <h2>4. Training Results & Metrics</h2>
+            <p>Trained from scratch on 108,000 samples over multiple epochs on an NVIDIA RTX A4000 GPU (~25 hours total training time).</p>
+            
+            <div class="stats-grid">
+                <div class="stat-card glass">
+                    <div class="stat-card-num">0.75</div>
+                    <div class="stat-card-label">BLEU-4 Score</div>
+                    <div class="stat-card-desc">Matches the paper's own SLT baseline (0.77). Measures 4-gram precision vs ground truth.</div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-card-num">4.15</div>
+                    <div class="stat-card-label">Best Dev Loss</div>
+                    <div class="stat-card-desc">Cross-entropy loss dropped from 6.97 at epoch 1 to a plateau of 4.15.</div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-card-num">56.7M</div>
+                    <div class="stat-card-label">Parameters</div>
+                    <div class="stat-card-desc">4 encoder + 4 decoder layers. d_model=512, 8 attention heads.</div>
+                </div>
+            </div>
+
+            <!-- Loss Curve -->
+            <div class="glass" style="padding: 2rem; border-radius: 16px; margin-bottom: 3rem;">
+                <h3 style="margin-top:0;">Training & Dev Loss Curve</h3>
+                <canvas id="lossChart" height="120"></canvas>
+            </div>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>Architecture</th>
+                        <th>BLEU-4</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="our-model">
+                        <td><strong>Ours (this project)</strong></td>
+                        <td>SLT + MediaPipe 576kp</td>
+                        <td>0.75</td>
+                    </tr>
+                    <tr>
+                        <td>Camgöz et al. 2020 (paper baseline)</td>
+                        <td>SLT + MediaPipe 75kp</td>
+                        <td>0.77</td>
+                    </tr>
+                    <tr>
+                        <td>T5-base + MediaPipe (paper SOTA)</td>
+                        <td>220M pretrained LM + pose</td>
+                        <td>1.47</td>
+                    </tr>
+                </tbody>
+            </table>
         </section>
 
         <!-- Section 5 -->
         <section class="glass article-card fade-in delay-1">
-            <h2>5. Validation, Testing, and Ethics</h2>
-            <h3>A. Testing Protocols</h3>
-            <ul>
-                <li><strong>Model Accuracy:</strong> Recognition models are evaluated using metrics such as precision, recall, and F1-score.</li>
-                <li><strong>Real-Time Performance:</strong> Latency tests measure the time required for recognition and speech generation to maintain a natural conversation flow.</li>
-                <li><strong>User Testing:</strong> The system is tested with deaf users to evaluate usability and clarity of translation.</li>
-            </ul>
-            <h3>B. Ethical and Privacy Considerations</h3>
-            <p>Privacy is maintained by processing video data securely.</p>
-            <ul>
-                <li><strong>Landmark-Only Processing:</strong> By converting video to numerical coordinates (landmarks), the system minimizes the need to store raw video data.</li>
-                <li><strong>Data Diversity:</strong> Training datasets (iSign and ISLTranslate) represent diverse users to prevent bias in recognition models.</li>
-                <li><strong>Transparency:</strong> Users are aware when automated translation is active.</li>
-            </ul>
+            <h2>5. Debugging & Key Insights</h2>
+            <h3>Vocabulary Capping</h3>
+            <p>The raw iSign dataset contained 69,806 unique words. This caused a critical training failure as the softmax over 69k classes was impossible to learn from only 118k examples. The fix was to cap the vocabulary to the top 8,000 most frequent words and replace the rest with an &lt;unk&gt; token, covering ~95% of the data and jump-starting BLEU scores.</p>
+            <h3>CUDA Out of Memory</h3>
+            <p>Processing up to 1778 frames required a 1778² × 512 attention matrix per sample. We resolved OOM errors by reducing the batch size to 16 and using gradient accumulation steps of 2, preserving the effective batch size of 32.</p>
+            <h3>The BLEU Score Ceiling</h3>
+            <p>The original paper notes that SLT translates isolated sentences cut from continuous videos. Sign language relies heavily on co-referencing (spatial reference points) introduced in earlier sentences. Without this broader video context, translation quality encounters a hard natural ceiling, an open research problem as of 2024.</p>
         </section>
 
-        <!-- Section 6 -->
-        <section class="glass article-card fade-in delay-2">
-            <h2>6. Conclusion</h2>
-            <p><strong>Anuvadh</strong> aims to bridge the communication gap between deaf individuals and hearing professionals. By integrating computer vision, LSTM-based gesture recognition, and speech synthesis, the system enables real-time translation of sign language into spoken language, improving accessibility for millions worldwide.</p>
-        </section>
     </main>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const epochs = [1,5,10,15,20,25,30,40];
+            const trainLoss = [5.47,4.55,4.30,4.19,4.17,4.14,4.14,4.13];
+            const devLoss   = [4.92,4.48,4.28,4.19,4.19,4.17,4.15,4.15];
+            const ctx = document.getElementById('lossChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: epochs,
+                    datasets: [
+                        { label: 'Train Loss', data: trainLoss, borderColor: '#D84315', backgroundColor: 'rgba(216, 67, 21, 0.1)', fill: true, tension: 0.4 },
+                        { label: 'Dev Loss', data: devLoss, borderColor: '#FF8F00', backgroundColor: 'rgba(255, 143, 0, 0.1)', fill: true, tension: 0.4 }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: { title: { display: true, text: 'Epoch' } },
+                        y: { title: { display: true, text: 'Loss' } }
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
